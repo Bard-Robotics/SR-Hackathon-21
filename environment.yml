@@ -1,7 +1,7 @@
 name: ganvis
 dependencies: 
     - python=3.7
-    - pytorch
+    - pytorch=1.6.*
     - librosa
     - click
     - requests
