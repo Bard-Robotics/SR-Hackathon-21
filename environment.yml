@@ -1,0 +1,9 @@
+name: ganvis
+dependencies: 
+    - python=3.*
+    - tensorflow=1.15
+    - numpy
+    - librosa
+    - ffmpeg
+channels:
+    - conda-forge
