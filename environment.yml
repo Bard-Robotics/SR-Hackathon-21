@@ -7,6 +7,9 @@ dependencies:
     - numpy
     - librosa
     - ffmpeg
+    - pip
+    - pip:
+          - youtube_dl
 channels:
     - conda-forge
     - pytorch

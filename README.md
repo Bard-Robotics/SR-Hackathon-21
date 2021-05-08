@@ -20,3 +20,4 @@ Be warned that the environment is a little finicky! If the environment file does
  - youtube_dl
 
 We use pretrained networks from [here](https://github.com/NVlabs/stylegan2-ada-pytorch).
+
