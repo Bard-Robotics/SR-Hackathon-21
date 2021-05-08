@@ -1,7 +1,7 @@
 name: ganvis
 dependencies: 
     - python=3.7
-    - pytorch=1.6.*
+    - pytorch=1.7.1
     - librosa
     - click
     - requests
@@ -15,3 +15,4 @@ dependencies:
       - youtube_dl
 channels:
     - conda-forge
+    - pytorch
