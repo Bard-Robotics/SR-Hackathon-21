@@ -1,18 +1,14 @@
 name: ganvis
 dependencies: 
     - python=3.7
-    - pytorch=1.7.1
+    - tensorflow=2.*
+    - numpy
     - librosa
-    - click
-    - requests
-    - tqdm
-    - ninja
-    - imageio-ffmpeg=0.4.3
     - ffmpeg
     - pip
     - pip: 
-      - pyspng
       - youtube_dl
+      - tensorflow-hub
 channels:
     - conda-forge
     - pytorch
