@@ -1,7 +1,7 @@
 # SR-Hackathon-21
 Ganvis project for HackSR 2021.
 
-# Design Concept 
+###　Design Concept 
 We convert audio files into latentent space by fft. By overlapping each fft slice, we have small changes from on to the other. Feeding them into pre-trained sytleGAN, we are able to obtain music video with smooth transition! 
 
 To run: 
