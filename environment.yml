@@ -2,6 +2,8 @@ name: ganvis
 dependencies: 
     - python=3.7
     - pytorch=1.7.1
+    - torchvision
+    - requests
     - numpy
     - librosa
     - ffmpeg

@@ -32,18 +32,20 @@ def curl(url, fname=None):
 
 FFT_SIZE = 1024
 BATCH_SIZE = 16
+# Can use ffhq (humans), metfaces (paintings), afhq[dog/cat/wild], brecahad (breast cancer)
+NETWORK = "ffhq.pkl"
 
 if __name__ == "__main__":
 
     # download pretrained netwok
     sys.path.append("./stylegan2-ada-pytorch")
 
-    # Can use ffhq, metfaces, afhq[dog/cat/wild], brecahad
-    PRETRAINED_NETWORK = "https://nvlabs-fi-cdn.nvidia.com/stylegan2-ada-pytorch/pretrained/brecahad.pkl"
-    curl(PRETRAINED_NETWORK, "brecahad.pkl")
+
+    PRETRAINED_NETWORK = f"https://nvlabs-fi-cdn.nvidia.com/stylegan2-ada-pytorch/pretrained/{NETWORK}"
+    curl(PRETRAINED_NETWORK, NETWORK)
 
     # open network
-    with open('ffhq.pkl', 'rb') as f:
+    with open(NETWORK, 'rb') as f:
         generator = pickle.load(f)['G_ema'].cuda()
 
     fname = sys.argv[-1]
@@ -56,7 +58,7 @@ if __name__ == "__main__":
     soundfile.write("output_trunc.wav", wave, sr)
 
     # Calculate fourier transform
-    spect = librosa.stft(wave, FFT_SIZE, FFT_SIZE // 8)
+    spect = librosa.stft(wave, FFT_SIZE, FFT_SIZE // 4)
     print(f"Spectrogram has shape {spect.shape}")
     spect = spect[:512, :] / np.sqrt(FFT_SIZE)
     amp = np.abs(spect) ** 2
