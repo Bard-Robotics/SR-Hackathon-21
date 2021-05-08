@@ -38,8 +38,9 @@ if __name__ == "__main__":
     # download pretrained netwok
     sys.path.append("./stylegan2-ada-pytorch")
 
-    PRETRAINED_NETWORK = "https://nvlabs-fi-cdn.nvidia.com/stylegan2-ada-pytorch/pretrained/ffhq.pkl"
-    curl(PRETRAINED_NETWORK, "ffhq.pkl")
+    # Can use ffhq, metfaces, afhq[dog/cat/wild], brecahad
+    PRETRAINED_NETWORK = "https://nvlabs-fi-cdn.nvidia.com/stylegan2-ada-pytorch/pretrained/brecahad.pkl"
+    curl(PRETRAINED_NETWORK, "brecahad.pkl")
 
     # open network
     with open('ffhq.pkl', 'rb') as f:
@@ -55,7 +56,7 @@ if __name__ == "__main__":
     soundfile.write("output_trunc.wav", wave, sr)
 
     # Calculate fourier transform
-    spect = librosa.stft(wave, FFT_SIZE, FFT_SIZE // 4)
+    spect = librosa.stft(wave, FFT_SIZE, FFT_SIZE // 8)
     print(f"Spectrogram has shape {spect.shape}")
     spect = spect[:512, :] / np.sqrt(FFT_SIZE)
     amp = np.abs(spect) ** 2
@@ -105,6 +106,7 @@ if __name__ == "__main__":
                     "-ar", "44100",
                     outname]
 
-    os.remove("output_trunc.wav")
     print(f"Calling {' '.join(ffmpeg_command)}")
     subprocess.run(ffmpeg_command)
+
+    os.remove("output_trunc.wav")
