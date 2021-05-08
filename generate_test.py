@@ -15,7 +15,7 @@ import os
 import argparse
 import shutil
 
-from getmp3 import downloadAudio
+from getmp3 import download_audio
 
 
 def curl(url, fname=None):
@@ -117,7 +117,7 @@ if __name__ == "__main__":
     else:
         gan_in, sr, num_samples_round = handle_mp3(args.input)
 
-    getImages(generator, gan_in)
+    get_images(generator, gan_in)
 
     num_images = gan_in.shape[0]
     length = num_samples_round / sr
